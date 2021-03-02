@@ -3,14 +3,35 @@
   <head>
     <meta charset="utf-8">
     <title>MBC News</title>
+    <!-- api code -->
     <script defer src="src/api.js"></script>
+
+    <!-- style sheet -->
+    <link rel="stylesheet" href="style.css">
+
   </head>
   <body>
-    <h1>News headlines:</h1>
+    <!-- navbar -->
+  <ul id="navbar">
+    <div class="logo-image">
+      <img src="images/makersLogo.png" class="img-fluid">
+    </div>
+    <li id="Title">MBC</li>
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="#Politics">Politics</a></li>
+    <li><a href="#World">World News</a></li>
+    <li><a href="#Technology">Technology</a></li>
+    <li><a href="#Sport">Sport</a></li>
+  </ul>
+
+    <h2>News headlines:</h2>
 
     <div id="headlines">
     <button type="button" onclick="getArticleData()">Refresh articles</button>
 
     </div>
+
+
+
   </body>
 </html>
