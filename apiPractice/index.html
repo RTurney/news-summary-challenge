@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sample page</title>
+  </head>
+  <body>
+    <div id="main">
+    </div>
+
+    <script>
+      // function getPostData() {
+      //   // Hardcode the post data for now.
+      //   return fetch("https://jsonplaceholder.typicode.com/posts/1")
+      //   .then(response => response.json())
+      //   .then(data => console.log(data));
+      //   // return {
+      //   //   "userId": 1,
+      //   //   "id": 1,
+      //   //   "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+      //   //   "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+      //   // };
+      // }
+      //
+      // function renderPost(postData) {
+      //   let postHeadingHTML = `<h1>${postData.title}</h1>`;
+      //   let postWithLinebreaksHTML = postData.body.replaceAll("\n", "<br>\n");
+      //   let postBodyHTML = `<p>${postWithLinebreaksHTML}</p>`;
+      //   return `${postHeadingHTML}${postBodyHTML}`;
+      // }
+      //
+      // let post = getPostData();
+      // let rendered = renderPost(post);
+      // document.getElementById("main").innerHTML = rendered;
+
+// Here is the new code which now works-------
+      // function getPostData() {
+      //   fetch("https://jsonplaceholder.typicode.com/posts/1").then(response => {
+      //     response.json().then(post => {
+      //       // ...to here.
+      //       let rendered = renderPost(post);
+      //       document.getElementById("main").innerHTML = rendered;
+      //     })
+      //   })
+      // }
+      //
+      // function renderPost(postData) {
+      //   let postHeadingHTML = `<h1>${postData.title}</h1>`;
+      //   let postWithLinebreaksHTML = postData.body.replaceAll("\n", "<br>\n");
+      //   let postBodyHTML = `<p>${postWithLinebreaksHTML}</p>`;
+      //   return `${postHeadingHTML}${postBodyHTML}`;
+      // }
+      //
+      // getPostData();
+      // // Move the things we need to happen IN THE FUTURE from here...
+
+// New code refactored
+      function getPostData() {
+        return fetch("https://jsonplaceholder.typicode.com/posts/1").then(response => {
+        return response.json();
+        })
+      }
+
+      function renderPost(postData) {
+        let postHeadingHTML = `<h1>${postData.title}</h1>`;
+        let postWithLinebreaksHTML = postData.body.replaceAll("\n", "<br>\n");
+        let postBodyHTML = `<p>${postWithLinebreaksHTML}</p>`;
+        return `${postHeadingHTML}${postBodyHTML}`;
+      }
+
+      getPostData().then(post => {
+        let rendered = renderPost(post);
+        document.getElementById("main").innerHTML = rendered;
+      });
+
+    </script>
+  </body>
+</html>
